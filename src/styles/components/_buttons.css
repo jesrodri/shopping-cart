@@ -1,0 +1,18 @@
+.button{
+  width: 150px;
+  height: 50px;
+  border-radius: 30px;
+  border: solid 2px;
+  margin: var(--margin-20);
+  color: var(--black);
+  font-family: var(--font-nunito);
+  font-weight: 700;
+  font-size: var(--normal-font-size);
+  background-color: var(--light-yellow);
+  letter-spacing: var(--letter-spacing);
+  cursor: pointer;
+}
+
+.button:hover{
+  border: solid 2px var(--yellow);
+}

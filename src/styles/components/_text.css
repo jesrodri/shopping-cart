@@ -1,0 +1,7 @@
+.text{
+  font-family: var(--font-nunito);
+  font-size: var(--font-16);
+  margin-left: var(--margin-32);
+  margin-right: var(--margin-32);
+  color: var(--white);
+}
