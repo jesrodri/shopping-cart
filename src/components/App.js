@@ -8,8 +8,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <button className="button" onClick={() => setIsCart(isCart => false)}>Products List</button>
-        <button className="button" onClick={() => setIsCart(isCart => true)}>Cart</button>
+        <button className="button" onClick={() => setIsCart(false)}>Products List</button>
+        <button className="button" onClick={() => setIsCart(true)}>Cart</button>
       </header>
       <main className="App-body">
         <Store isCart={isCart}/>

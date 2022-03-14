@@ -6,7 +6,7 @@ import { PRODUCTS } from "../logic/constants";
 function Store({isCart}) {
 
   const [products, setProducts] = useState(PRODUCTS);
-  const [cartItems, setCartItems] = useState();
+  const [cartItems, setCartItems] = useState([]);
 
   if (isCart) {
     return(
