@@ -3,26 +3,27 @@ import ProductsList from "./ProductsList";
 import Cart from "./Cart";
 import { PRODUCTS } from "../logic/constants";
 
-function Store({isCart}) {
+function Store(props) {
 
   const [products, setProducts] = useState(PRODUCTS);
   const [cartItems, setCartItems] = useState([]);
 
-  const addToCart = ({product}) => {
-    if (!cartItems.includes(product)) {
-      setCartItems([cartItems, product]);
-    };
+  const addToCart = (product) => {
+      if (!cartItems.includes(product, 0)) {
+        setCartItems([...cartItems, product]);
+      }
   }
   
-  if (isCart) {
+  if (props.componentToRender === 'cart') {
     return(
       <Cart />
     );
-  } else if (!isCart) {
-      return(
-        <ProductsList products={products} addToCart={addToCart}/>
-      );
-    };
+  };
+  if (props.componentToRender === 'products') {
+    return(
+      <ProductsList products={products} addToCart={addToCart}/>
+    );
+  };
 }
 
 export default Store;
