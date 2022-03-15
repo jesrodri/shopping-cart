@@ -1,0 +1,7 @@
+html{
+  background: linear-gradient(rgba(0,0,0,.70),rgba(0,0,0,.70)100%), url('../../img/background.jpg');
+  background-size: cover;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+}
