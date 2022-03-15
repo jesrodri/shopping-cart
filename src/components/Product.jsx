@@ -1,4 +1,4 @@
-function Product(props) {
+function Product({product, addToCart}) {
   return(
     <>
     <h1 className="title"> PRODUCT </h1>

@@ -1,10 +1,10 @@
 import Product from "./Product";
 
-function ProductsList(props) {
+function ProductsList({products, addToCart}) {
   return(
-    <div className="products--container">
-    {props.products.map(product => (
-      <Product product={product} addToCart={props.addToCart}/>
+    <div className="products-list">
+    {products.map(product => (
+      <Product product={product} addToCart={addToCart}/>
     ))}
   </div>
 );
