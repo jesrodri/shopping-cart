@@ -8,10 +8,12 @@ function Store({isCart}) {
   const [products, setProducts] = useState(PRODUCTS);
   const [cartItems, setCartItems] = useState([]);
 
-  const addToCart = () => {
-
+  const addToCart = ({product}) => {
+    if (!cartItems.includes(product)) {
+      setCartItems([cartItems, product]);
+    };
   }
-
+  
   if (isCart) {
     return(
       <Cart />

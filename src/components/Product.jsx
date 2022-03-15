@@ -1,8 +1,9 @@
 function Product(props) {
   return(
     <>
-    <h1 className="title"> PRODUCT </h1>
-    <p className="text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat, quibusdam! Voluptatibus cumque voluptates, doloremque, a inventore recusandae minus vel incidunt, molestiae deleniti repellendus? Facilis amet magnam recusandae incidunt eaque! Suscipit?</p>
+      <h1 className="title"> {props.product.name} </h1>
+      <p className="text">{props.product.description}</p>
+      <button className="button--product" onClick={props.addToCart(props.product)}>Add to cart</button>
     </>
   );
 }

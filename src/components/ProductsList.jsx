@@ -4,7 +4,9 @@ function ProductsList(props) {
   return(
     <div className="products--container">
     {props.products.map(product => (
-      <Product product={product} addToCart={props.addToCart}/>
+      <div className="product" key={`${props.products.indexOf(product)}`}>
+        <Product product={product} addToCart={props.addToCart}/>
+      </div>
     ))}
   </div>
 );

@@ -4,4 +4,5 @@
   margin-left: var(--margin-32);
   margin-right: var(--margin-32);
   color: var(--white);
+  text-align: justify;
 }
