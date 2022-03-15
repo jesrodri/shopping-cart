@@ -3,16 +3,16 @@ import { useState } from "react";
 import Store from './Store';
 
 function App() {
-  const [isCart, setIsCart] = useState(0);
+  const [componentToRender, setComponentToRender] = useState('products');
 
   return (
     <div className="App">
       <header className="App-header">
-        <button className="button" onClick={() => setIsCart(false)}>Products List</button>
-        <button className="button" onClick={() => setIsCart(true)}>Cart</button>
+        <button className="button" onClick={() => setComponentToRender('products')}>Products List</button>
+        <button className="button" onClick={() => setComponentToRender('cart')}>Cart</button>
       </header>
       <main className="App-body">
-        <Store isCart={isCart}/>
+        <Store componentToRender={componentToRender}/>
       </main>
     </div>
   );
