@@ -4,7 +4,7 @@ import Cart from "./Cart";
 import { PRODUCTS } from "../logic/constants";
 import { removeItem } from "../logic/cartFunctions";
 
-function Store({componentToRender, setComponentToRender}) {
+function Store({componentToRender}) {
 
   const [products, setProducts] = useState(PRODUCTS);
   const [cartItems, setCartItems] = useState([]);
