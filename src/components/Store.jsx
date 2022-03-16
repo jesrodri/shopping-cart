@@ -8,7 +8,6 @@ function Store({componentToRender, setComponentToRender}) {
 
   const [products, setProducts] = useState(PRODUCTS);
   const [cartItems, setCartItems] = useState([]);
-  console.log(cartItems);
 
   const addToCart = (product) => {
       if (!cartItems.includes(product, 0)) {
