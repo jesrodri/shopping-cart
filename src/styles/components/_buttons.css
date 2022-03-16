@@ -16,3 +16,8 @@
 .button:hover{
   border: solid 2px var(--yellow);
 }
+
+.button:active{
+  border: solid 2px var(--yellow);
+  background-color: var(--yellow);
+}
