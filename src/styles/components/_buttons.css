@@ -43,3 +43,8 @@
   border: solid 2px var(--dark-salmon);
   background-color: var(--dark-salmon);
 }
+
+.button--cart-item{
+  width: 180px;
+  height: 35px;
+}
