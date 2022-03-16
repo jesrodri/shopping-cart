@@ -14,9 +14,13 @@ function Store({componentToRender, setComponentToRender}) {
       }
   }
 
+  const removeFromCart = () => {
+
+  }
+
   if (componentToRender === 'cart') {
     return(
-      <Cart />
+      <Cart cart={cartItems} removeFromCart={removeFromCart}/>
     );
   };
   if (componentToRender === 'products') {
