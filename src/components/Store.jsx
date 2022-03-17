@@ -15,8 +15,10 @@ function Store({componentToRender}) {
       }
   }
 
-  const removeFromCart = () => {
-
+  const removeFromCart = (item) => {
+    setCartItems((currentState) => currentState.filter( element => {
+      return element !== item;
+    }))
   }
 
   if (componentToRender === 'cart') {
