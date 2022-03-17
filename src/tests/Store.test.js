@@ -7,7 +7,7 @@ import { PRODUCTS } from "../logic/constants";
 
 describe('<Store />', () => {
   describe('when it renders the products list', () => {
-    it('renders the product name', () => {
+    it('has the product name', () => {
       const testProduct = PRODUCTS[0];
   
       render(<Store initialComponent="products"/>);
@@ -16,7 +16,7 @@ describe('<Store />', () => {
       expect(productName).toBeInTheDocument();
     });
   
-    it('renders the product description', () => {
+    it('has the product description', () => {
       const testProduct = PRODUCTS[0];
   
       render(<Store initialComponent="products"/>);
