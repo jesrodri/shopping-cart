@@ -12,7 +12,7 @@ function App() {
         <button className="button" onClick={() => setComponentToRender('cart')}>Cart</button>
       </header>
       <main className="App-body">
-        <Store componentToRender={componentToRender} setComponentToRender={setComponentToRender}/>
+        <Store componentToRender={componentToRender}/>
       </main>
     </div>
   );
