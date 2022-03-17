@@ -24,14 +24,16 @@ describe('<Product />', () => {
     expect(productDescription).toBeInTheDocument();
   });
 
-  it('calls addToCart function once', () => {
-    const testProduct = { name: 'Blueberry', description: 'Ready for you to make the best muffins.' };
-    const testAddToCart = jest.fn();
-
-    render(<Product product={testProduct} addToCart={testAddToCart}/>);
-    const buttonAddToCart = screen.getByRole('button', {name: 'Add to cart'});
-    userEvent.click(buttonAddToCart);
-
-    expect(testAddToCart).toHaveBeenCalledTimes(1);
+  describe('when the user clicks the Add to cart button', () => {
+    it('calls addToCart function once with the selected product', () => {
+      const testProduct = { name: 'Blueberry', description: 'Ready for you to make the best muffins.' };
+      const testAddToCart = jest.fn();
+  
+      render(<Product product={testProduct} addToCart={testAddToCart}/>);
+      const buttonAddToCart = screen.getByRole('button', {name: 'Add to cart'});
+      userEvent.click(buttonAddToCart);
+  
+      expect(testAddToCart).toHaveBeenNthCalledWith(1, testProduct);
+    });
   });
 });
