@@ -24,14 +24,16 @@ describe('<CartItem />', () => {
     expect(itemDescription).toBeInTheDocument();
   });
 
-  it('calls removeFromCart function once', () => {
-    const testItem = { name: 'Blueberry', description: 'Ready for you to make the best muffins.' };
-    const testRemoveFromCart = jest.fn();
-
-    render(<CartItem item={testItem} removeFromCart={testRemoveFromCart}/>);
-    const buttonRemoveFromCart = screen.getByRole('button', {name: 'Remove from cart'});
-    userEvent.click(buttonRemoveFromCart);
-
-    expect(testRemoveFromCart).toHaveBeenCalledTimes(1);
-  });
+  describe('when the user clicks the Remove from cart button', () => {
+    it('calls removeFromCart function once', () => {
+      const testItem = { name: 'Blueberry', description: 'Ready for you to make the best muffins.' };
+      const testRemoveFromCart = jest.fn();
+  
+      render(<CartItem item={testItem} removeFromCart={testRemoveFromCart}/>);
+      const buttonRemoveFromCart = screen.getByRole('button', {name: 'Remove from cart'});
+      userEvent.click(buttonRemoveFromCart);
+  
+      expect(testRemoveFromCart).toHaveBeenNthCalledWith(1, testItem);
+    });
+  })
 });

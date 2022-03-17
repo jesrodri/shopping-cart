@@ -2,7 +2,6 @@ import { useState } from "react";
 import ProductsList from "./ProductsList";
 import Cart from "./Cart";
 import { PRODUCTS } from "../logic/constants";
-import { removeItem } from "../logic/cartFunctions";
 
 function Store({componentToRender, setComponentToRender}) {
 
@@ -16,8 +15,10 @@ function Store({componentToRender, setComponentToRender}) {
   }
 
   const removeFromCart = (item) => {
-    setCartItems((currentState) => removeItem(currentState, item));
-}
+    setCartItems((currentState) => currentState.filter( element => {
+      return element !== item;
+    }))
+  }
 
   if (componentToRender === 'cart') {
     return(
