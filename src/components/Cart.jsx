@@ -1,10 +1,13 @@
-function Cart() {
+import CartItem from "./CartItem";
+
+function Cart({cart, removeFromCart}) {
   return(
-    <>
-    <h1 className="title"> CART </h1>
-    <p className="text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat, quibusdam! Voluptatibus cumque voluptates, doloremque, a inventore recusandae minus vel incidunt, molestiae deleniti repellendus? Facilis amet magnam recusandae incidunt eaque! Suscipit?</p>
-    </>
-  );
+    <div className="cart">
+    {cart.map(cartItem => (
+      <CartItem item={cartItem} removeFromCart={removeFromCart} key={cartItem.name} />
+    ))}
+    </div>
+);
 }
 
 export default Cart;

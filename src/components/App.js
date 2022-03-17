@@ -8,8 +8,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <button className="button" onClick={() => setComponentToRender('products')}>Products List</button>
-        <button className="button" onClick={() => setComponentToRender('cart')}>Cart</button>
+        <button className="button button--products" onClick={() => setComponentToRender('products')}>Products List</button>
+        <button className="button button--cart" onClick={() => setComponentToRender('cart')}>Cart</button>
       </header>
       <main className="App-body">
         <Store componentToRender={componentToRender}/>

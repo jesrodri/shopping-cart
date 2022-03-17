@@ -14,13 +14,11 @@
   cursor: pointer;
 }
 
-.button:hover,
-.button--product:hover{
+.button:hover{
   border: solid 2px var(--yellow);
 }
 
-.button:active,
-.button--product:active{
+.button:active{
   border: solid 2px var(--yellow);
   background-color: var(--yellow);
 }
@@ -28,4 +26,20 @@
 .button--product{
   width: 120px;
   height: 35px;
+  background-color: var(--salmon);
+}
+
+.button--products{
+  background-color: var(--salmon);
+}
+
+.button--products:hover,
+.button--product:hover{
+  border: solid 2px var(--dark-salmon);
+}
+
+.button--products:active,
+.button--product:active{
+  border: solid 2px var(--dark-salmon);
+  background-color: var(--dark-salmon);
 }
