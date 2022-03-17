@@ -25,7 +25,7 @@ describe('<CartItem />', () => {
   });
 
   describe('when the user clicks the Remove from cart button', () => {
-    it('calls removeFromCart function once', () => {
+    it('calls removeFromCart function once with the selected item', () => {
       const testItem = { name: 'Blueberry', description: 'Ready for you to make the best muffins.' };
       const testRemoveFromCart = jest.fn();
   
