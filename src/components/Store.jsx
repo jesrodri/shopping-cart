@@ -10,7 +10,7 @@ function Store({initialComponent}) {
   const [componentToRender, setComponentToRender] = useState(initialComponent);
 
   const addToCart = (product) => {
-      if (!cartItems.includes(product, 0)) {
+      if (!cartItems.includes(product)) {
         setCartItems((currentState) => [...currentState, product]);
       }
   }
