@@ -1,7 +1,6 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
-import App from '../components/App';
 import Store from '../components/Store';
 import { PRODUCTS } from "../logic/constants";
 
@@ -35,24 +34,15 @@ describe('<Store />', () => {
 
       const buttonCart = screen.getAllByRole('button', {name: 'Cart'})[0];
       userEvent.click(buttonCart);
-
-      expect(screen.getByText('Banana')).toBeInTheDocument();
-    });
-
-    it('renders the Remove from cart button in the Cart page', () => {
-      render(<Store initialComponent={'products'}/>);
-
-      const buttonAddToCart = screen.getAllByRole('button', {name: 'Add to cart'})[0];
-      userEvent.click(buttonAddToCart);
-
-      const buttonCart = screen.getAllByRole('button', {name: 'Cart'})[0];
-      userEvent.click(buttonCart);
-
       const buttonRemoveFromCart = screen.getAllByRole('button', {name: 'Remove from cart'})[0];
 
+      const productName = screen.getByText('Banana');
+      const productDescription = screen.getByText('Sweet, yellow and delicious banana, the real Farm to Table one!');
+
+      expect(productName).toBeInTheDocument();
+      expect(productDescription).toBeInTheDocument();
       expect(buttonRemoveFromCart).toBeInTheDocument();
     });
-
   });
 
   describe('when the user removes a product from the cart', () => {
@@ -68,23 +58,12 @@ describe('<Store />', () => {
       const buttonRemoveFromCart = screen.getAllByRole('button', {name: 'Remove from cart'})[0];
       userEvent.click(buttonRemoveFromCart);
 
-      expect(screen.queryByText('Banana')).not.toBeInTheDocument();
-    });
+      const itemName = screen.queryByText('Banana');
+      const itemDescription = screen.queryByText('Sweet, yellow and delicious banana, the real Farm to Table one!');
 
-    it('removes the Remove from cart button from the Cart page', () => {
-      render(<Store initialComponent="products"/>);
-
-      const buttonAddToCart = screen.getAllByRole('button', {name: 'Add to cart'})[0];
-      userEvent.click(buttonAddToCart);
-
-      const buttonCart = screen.getAllByRole('button', {name: 'Cart'})[0];
-      userEvent.click(buttonCart);
-
-      const buttonRemoveFromCart = screen.getAllByRole('button', {name: 'Remove from cart'})[0];
-      userEvent.click(buttonRemoveFromCart);
-
+      expect(itemName).not.toBeInTheDocument();
+      expect(itemDescription).not.toBeInTheDocument();
       expect(buttonRemoveFromCart).not.toBeInTheDocument();
     });
-
   });
 });
