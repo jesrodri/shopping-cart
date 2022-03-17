@@ -1,7 +1,6 @@
-.button,
-.button--product{
-  width: 150px;
-  height: 50px;
+.button{
+  width: 120px;
+  height: 35px;
   border-radius: 30px;
   border: solid 2px;
   margin: var(--margin-20);
@@ -9,42 +8,39 @@
   font-family: var(--font-nunito);
   font-weight: 700;
   font-size: var(--normal-font-size);
-  background-color: var(--light-yellow);
   letter-spacing: var(--letter-spacing);
   cursor: pointer;
 }
 
-.button:hover{
-  border: solid 2px var(--yellow);
-}
-
-.button:active{
-  border: solid 2px var(--yellow);
-  background-color: var(--yellow);
-}
-
-.button--product{
-  width: 120px;
-  height: 35px;
+.button__product{
   background-color: var(--salmon);
 }
 
-.button--products{
-  background-color: var(--salmon);
-}
 
-.button--products:hover,
-.button--product:hover{
+.button__product:hover{
   border: solid 2px var(--dark-salmon);
 }
 
-.button--products:active,
-.button--product:active{
+.button__product:active{
   border: solid 2px var(--dark-salmon);
   background-color: var(--dark-salmon);
 }
 
-.button--cart-item{
+.button__cart{
   width: 180px;
   height: 35px;
+  background-color: var(--light-yellow);
+}
+.button__cart:hover{
+  border: solid 2px var(--yellow);
+}
+
+.button__cart:active{
+  border: solid 2px var(--yellow);
+  background-color: var(--yellow);
+}
+
+.button--wide{
+  width: 150px;
+  height: 50px;
 }

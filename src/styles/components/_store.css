@@ -1,15 +1,15 @@
-.App{
+.Store{
   font-size: var(--font-18);
   font-family: var(--font-nunito);
   height: 100%;
 }
 
-.App-header{
+.Store-header{
   display: flex;
   justify-content: center;
 }
 
-.App-body{
+.Store-body{
   display: flex;
   flex-direction: column;
   align-items: center;
