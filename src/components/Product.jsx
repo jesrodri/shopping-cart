@@ -1,10 +1,12 @@
 function Product({product, addToCart}) {
   return(
-    <>
-    <h1 className="title"> PRODUCT </h1>
-    <p className="text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat, quibusdam! Voluptatibus cumque voluptates, doloremque, a inventore recusandae minus vel incidunt, molestiae deleniti repellendus? Facilis amet magnam recusandae incidunt eaque! Suscipit?</p>
-    </>
+    <div className="product">
+      <h1 className="title"> {product.name} </h1>
+      <p className="text">{product.description}</p>
+      <button className="button--product" onClick={() => addToCart(product)}>Add to cart</button>
+    </div>
   );
 }
 
 export default Product;
+

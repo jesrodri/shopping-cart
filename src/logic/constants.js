@@ -6,6 +6,31 @@ export const PRODUCTS = [
 
   {
     name: 'Cantaloupe',
-    description: 'Juicy and orange, best cantaloupe melon in town.'
+    description: 'Juicy, orange and sweet, best cantaloupe melon in town.'
+  },
+
+  {
+    name: 'Avocado',
+    description: 'Soft and ripe, ready for you to make that great guacamole of yours.'
+  },
+
+  {
+    name: 'Lemon',
+    description: 'Perfect to season the salad or complement your favorite drink.'
+  },
+
+  {
+    name: 'Watermelon',
+    description: 'The most juicy in town, gets you ready for summer days.'
+  },
+
+  {
+    name: 'Orange',
+    description: 'These oranges will make that perfect juice you are dreaming of.'
+  },
+
+  {
+    name: 'Peach',
+    description: 'The sweetest, straight from Georgia.'
   }
 ]

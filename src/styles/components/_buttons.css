@@ -1,4 +1,5 @@
-.button{
+.button,
+.button--product{
   width: 150px;
   height: 50px;
   border-radius: 30px;
@@ -13,11 +14,18 @@
   cursor: pointer;
 }
 
-.button:hover{
+.button:hover,
+.button--product:hover{
   border: solid 2px var(--yellow);
 }
 
-.button:active{
+.button:active,
+.button--product:active{
   border: solid 2px var(--yellow);
   background-color: var(--yellow);
+}
+
+.button--product{
+  width: 120px;
+  height: 35px;
 }
