@@ -22,12 +22,12 @@ function Store({initialComponent}) {
   }
 
   return (
-    <div className="Store">
-      <header className="Store-header">
+    <div className="store">
+      <header className="store__header">
         <button className="button button--wide button__product" onClick={() => setComponentToRender('products')}>Products List</button>
         <button className="button button--wide button__cart" onClick={() => setComponentToRender('cart')}>Cart</button>
       </header>
-      <main className="Store-body">
+      <main className="store__body">
         {componentToRender === 'cart' && <Cart cart={cartItems} removeFromCart={removeFromCart}/>}
         {componentToRender === 'products' && <ProductsList products={products} addToCart={addToCart}/>}
       </main>

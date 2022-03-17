@@ -1,15 +1,15 @@
-.Store{
+.store{
   font-size: var(--font-18);
   font-family: var(--font-nunito);
   height: 100%;
 }
 
-.Store-header{
+.store__header{
   display: flex;
   justify-content: center;
 }
 
-.Store-body{
+.store__body{
   display: flex;
   flex-direction: column;
   align-items: center;

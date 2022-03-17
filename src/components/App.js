@@ -3,7 +3,7 @@ import Store from './Store';
 
 function App() {
   return (
-    <Store initialComponent={'products'}/>
+    <Store initialComponent="products"/>
   );
 }
 
