@@ -24,8 +24,8 @@ function Store({initialComponent}) {
   return (
     <div className="store">
       <header className="store__header">
-        <button className="button button--wide button__product" onClick={() => setComponentToRender('products')}>Products List</button>
-        <button className="button button--wide button__cart" onClick={() => setComponentToRender('cart')}>Cart</button>
+        <button className="button button--wide button--product" onClick={() => setComponentToRender('products')}>Products List</button>
+        <button className="button button--wide button--cart" onClick={() => setComponentToRender('cart')}>Cart</button>
       </header>
       <main className="store__body">
         {componentToRender === 'cart' && <Cart cart={cartItems} removeFromCart={removeFromCart}/>}

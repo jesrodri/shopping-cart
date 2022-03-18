@@ -12,30 +12,30 @@
   cursor: pointer;
 }
 
-.button__product{
+.button--product{
   background-color: var(--salmon);
 }
 
 
-.button__product:hover{
+.button--product:hover{
   border: solid 2px var(--dark-salmon);
 }
 
-.button__product:active{
+.button--product:active{
   border: solid 2px var(--dark-salmon);
   background-color: var(--dark-salmon);
 }
 
-.button__cart{
+.button--cart{
   width: 180px;
   height: 35px;
   background-color: var(--light-yellow);
 }
-.button__cart:hover{
+.button--cart:hover{
   border: solid 2px var(--yellow);
 }
 
-.button__cart:active{
+.button--cart:active{
   border: solid 2px var(--yellow);
   background-color: var(--yellow);
 }
