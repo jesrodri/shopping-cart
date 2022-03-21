@@ -40,6 +40,19 @@
   background-color: var(--yellow);
 }
 
+.button--checkout{
+  background-color: var(--green);
+}
+
+.button--checkout:hover{
+  border: solid 2px var(--dark-green);
+}
+
+.button--checkout:active{
+  border: solid 2px var(--dark-green);
+  background-color: var(--dark-green);
+}
+
 .button--wide{
   width: 150px;
   height: 50px;
