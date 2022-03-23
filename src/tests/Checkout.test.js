@@ -24,10 +24,10 @@ describe('<Checkout />', () => {
     it('renders the Payment method title', () => {
       render(<Checkout />);
 
-      const buttonNext = screen.getAllByRole('button', {name: 'Next'})[0];
+      const buttonNext = screen.getByRole('button', {name: 'Next'});
       userEvent.click(buttonNext);
 
-      const paymentMethodTitle = screen.getByText(/Payment method/i);
+      const paymentMethodTitle = screen.getByRole('heading', {name: 'Payment method'});
   
       expect(paymentMethodTitle).toBeInTheDocument();
     });
@@ -37,10 +37,11 @@ describe('<Checkout />', () => {
     it('renders the Order summary title', () => {
       render(<Checkout />);
       
-      const buttonNext = screen.getAllByRole('button', {name: 'Next'})[0];
-      userEvent.dblClick(buttonNext);
+      const buttonNext = screen.getByRole('button', {name: 'Next'});
+      userEvent.click(buttonNext);
+      userEvent.click(buttonNext);
 
-      const orderSummaryTitle = screen.getByText(/Order summary/i);
+      const orderSummaryTitle = screen.getByRole('heading', {name: 'Order summary'});
   
       expect(orderSummaryTitle).toBeInTheDocument();
     });

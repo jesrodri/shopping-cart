@@ -22,7 +22,7 @@ function Store({initialComponent}) {
     }))
   }
 
-  const checkout = (cart) => {
+  const renderCheckout = () => {
     return(
       setComponentToRender('checkout')
     )
@@ -35,7 +35,7 @@ function Store({initialComponent}) {
         <button className="button button--wide button--cart" onClick={() => setComponentToRender('cart')}>Cart</button>
       </header>
       <main className="store__body">
-        {componentToRender === 'cart' && <Cart cart={cartItems} removeFromCart={removeFromCart} checkout={checkout}/>}
+        {componentToRender === 'cart' && <Cart cart={cartItems} removeFromCart={removeFromCart} renderCheckout={renderCheckout}/>}
         {componentToRender === 'products' && <ProductsList products={products} addToCart={addToCart}/>}
         {componentToRender === 'checkout' && <Checkout/>}
       </main>
