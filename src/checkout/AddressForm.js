@@ -4,8 +4,23 @@ import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+import countriesAndStates from '../logic/countries.json';
 
 export default function AddressForm() {
+
+  const [selectedCountry, setSelectedCountry] = React.useState('');
+  const [statesList, setStatesList] = React.useState([]);
+  console.log(statesList);
+
+  const handleChangeCountry = (event) => {
+    setSelectedCountry(event.target.value);
+    let selectedCountryObject = countriesAndStates.countries.find(country => country.country === event.target.value);
+    setStatesList(selectedCountryObject.states);
+  }
+
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -58,26 +73,6 @@ export default function AddressForm() {
         <Grid item xs={12} sm={6}>
           <TextField
             required
-            id="city"
-            name="city"
-            label="City"
-            fullWidth
-            autoComplete="shipping address-level2"
-            variant="standard"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            id="state"
-            name="state"
-            label="State/Province/Region"
-            fullWidth
-            variant="standard"
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            required
             id="zip"
             name="zip"
             label="Zip / Postal code"
@@ -89,13 +84,42 @@ export default function AddressForm() {
         <Grid item xs={12} sm={6}>
           <TextField
             required
-            id="country"
-            name="country"
-            label="Country"
+            id="city"
+            name="city"
+            label="City"
             fullWidth
-            autoComplete="shipping country"
+            autoComplete="shipping address-level2"
             variant="standard"
           />
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <InputLabel id="country-label">Country *</InputLabel>
+          <Select
+            required
+            labelId="country-label"
+            id="country"
+            label="Country"
+            onChange={handleChangeCountry}
+            defaultValue = ""
+          >
+            {countriesAndStates.countries.map(country => (
+              <MenuItem key={country.country} value={country.country}>{country.country}</MenuItem>
+            ))}
+          </Select>
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <InputLabel id="state-label">State/Province/Region *</InputLabel>
+          <Select
+            required
+            labelId="state-label"
+            id="state"
+            label="State/Province/Region"
+            defaultValue = ""
+          >
+            {statesList.map(state => (
+              <MenuItem key={state} value={state}>{state}</MenuItem>
+            ))}
+          </Select>
         </Grid>
         <Grid item xs={12}>
           <FormControlLabel
