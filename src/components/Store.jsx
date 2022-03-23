@@ -22,7 +22,7 @@ function Store({initialComponent}) {
     }))
   }
 
-  const renderCheckout = (cart) => {
+  const renderCheckout = () => {
     return(
       setComponentToRender('checkout')
     )
