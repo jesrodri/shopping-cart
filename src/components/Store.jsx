@@ -2,6 +2,7 @@ import { useState } from "react";
 import ProductsList from "./ProductsList";
 import Cart from "./Cart";
 import { PRODUCTS } from "../logic/constants";
+import Checkout from "../checkout";
 
 function Store({initialComponent}) {
 
@@ -21,6 +22,12 @@ function Store({initialComponent}) {
     }))
   }
 
+  const renderCheckout = () => {
+    return(
+      setComponentToRender('checkout')
+    )
+  }
+
   return (
     <div className="store">
       <header className="store__header">
@@ -28,8 +35,9 @@ function Store({initialComponent}) {
         <button className="button button--wide button--cart" onClick={() => setComponentToRender('cart')}>Cart</button>
       </header>
       <main className="store__body">
-        {componentToRender === 'cart' && <Cart cart={cartItems} removeFromCart={removeFromCart}/>}
+        {componentToRender === 'cart' && <Cart cart={cartItems} removeFromCart={removeFromCart} renderCheckout={renderCheckout}/>}
         {componentToRender === 'products' && <ProductsList products={products} addToCart={addToCart}/>}
+        {componentToRender === 'checkout' && <Checkout/>}
       </main>
     </div>
   );
