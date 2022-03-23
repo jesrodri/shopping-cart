@@ -1,6 +1,6 @@
 import CartItem from "./CartItem";
 
-function Cart({cart, removeFromCart, checkout}) {
+function Cart({cart, removeFromCart, renderCheckout}) {
   return(
     <>
     <div className="cart">
@@ -8,7 +8,7 @@ function Cart({cart, removeFromCart, checkout}) {
       <CartItem item={cartItem} removeFromCart={removeFromCart} key={cartItem.name} />
     ))}
     </div>
-    <button className="button button--checkout button--wide" onClick={() => checkout(cart)}>Checkout</button>
+    <button className="button button--checkout button--wide" onClick={() => renderCheckout()}>Checkout</button>
     </>
 );
 }
