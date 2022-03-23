@@ -11,12 +11,10 @@ import countriesAndStates from '../logic/countries.json';
 
 export default function AddressForm() {
 
-  const [selectedCountry, setSelectedCountry] = React.useState('');
   const [statesList, setStatesList] = React.useState([]);
   console.log(statesList);
 
-  const handleChangeCountry = (event) => {
-    setSelectedCountry(event.target.value);
+  const handleChange = (event) => {
     let selectedCountryObject = countriesAndStates.countries.find(country => country.country === event.target.value);
     setStatesList(selectedCountryObject.states);
   }
@@ -99,7 +97,7 @@ export default function AddressForm() {
             labelId="country-label"
             id="country"
             label="Country"
-            onChange={handleChangeCountry}
+            onChange={handleChange}
             defaultValue = ""
           >
             {countriesAndStates.countries.map(country => (
