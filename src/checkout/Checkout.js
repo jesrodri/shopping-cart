@@ -22,7 +22,7 @@ function getStepContent(step, onChange, handleSubmit, form, setForm, formRef, ca
     case 1:
       return <PaymentForm onChange={onChange} handleSubmit={handleSubmit} form={form} formRef={formRef} />;
     case 2:
-      return <Review onChange={onChange} handleSubmit={handleSubmit} form={form} formRef={formRef} cart={cart} />;
+      return <Review handleSubmit={handleSubmit} form={form} formRef={formRef} cart={cart} />;
     default:
       throw new Error('Unknown step');
   }

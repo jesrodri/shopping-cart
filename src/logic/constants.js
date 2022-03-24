@@ -38,6 +38,6 @@ export const PRODUCTS = [
   {
     name: 'Peach',
     description: 'The sweetest, straight from Georgia.',
-    price: 1.99
+    price: 2.99
   }
 ]
