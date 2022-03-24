@@ -15,10 +15,10 @@ import Review from './Review';
 
 const steps = ['Shipping address', 'Payment details', 'Review your order'];
 
-function getStepContent(step, onChange, onBlur, handleSubmit, form, setForm, formRef) {
+function getStepContent(step, onChange, handleSubmit, form, setForm, formRef) {
   switch (step) {
     case 0:
-      return <AddressForm onChange={onChange} onBlur={onBlur} handleSubmit={handleSubmit} form={form} formRef={formRef} />;
+      return <AddressForm onChange={onChange} handleSubmit={handleSubmit} form={form} formRef={formRef} />;
     case 1:
       return <PaymentForm onChange={onChange} handleSubmit={handleSubmit} form={form} formRef={formRef} />;
     case 2:
@@ -48,10 +48,10 @@ export default function Checkout() {
 
   React.useEffect(() => {
     checkValidity();
-  }, [activeStep]);
+  }, [form, activeStep]);
   
   const checkValidity = () => {
-    setValid(formRef.current.reportValidity());
+    setValid(formRef.current.checkValidity());
   };
   
   const handleNext = () => {
@@ -63,12 +63,8 @@ export default function Checkout() {
   };
   
   const onChange = (event) => {
-    setForm({ ...form, [event.target.name]: event.target.value });
+    setForm(formState => ({ ...formState, [event.target.name]: event.target.value }));
   };
-  
-  const onBlur = () => {
-    checkValidity();
-  }
 
   const handleSubmit = () => {
 
@@ -103,7 +99,7 @@ export default function Checkout() {
               </React.Fragment>
             ) : (
               <React.Fragment>
-                {getStepContent(activeStep, onChange, onBlur, handleSubmit, form, setForm, formRef)}
+                {getStepContent(activeStep, onChange, handleSubmit, form, setForm, formRef)}
                 <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                   {activeStep !== 0 && (
                     <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>

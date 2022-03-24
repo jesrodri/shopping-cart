@@ -31,7 +31,6 @@ export default function AddressForm({onChange, onBlur, handleSubmit, form, formR
             variant="standard"
             value={form.firstName || ''}
             onChange={onChange}
-            onBlur={onBlur}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -45,7 +44,6 @@ export default function AddressForm({onChange, onBlur, handleSubmit, form, formR
             variant="standard"
             value={form.lastName || ''}
             onChange={onChange}
-            onBlur={onBlur}
           />
         </Grid>
         <Grid item xs={12}>
@@ -59,7 +57,6 @@ export default function AddressForm({onChange, onBlur, handleSubmit, form, formR
             variant="standard"
             value={form.address1 || ''}
             onChange={onChange}
-            onBlur={onBlur}
           />
         </Grid>
         <Grid item xs={12}>
@@ -85,7 +82,6 @@ export default function AddressForm({onChange, onBlur, handleSubmit, form, formR
             variant="standard"
             value={form.zip || ''}
             onChange={onChange}
-            onBlur={onBlur}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -99,7 +95,6 @@ export default function AddressForm({onChange, onBlur, handleSubmit, form, formR
             variant="standard"
             value={form.city || ''}
             onChange={onChange}
-            onBlur={onBlur}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -114,7 +109,6 @@ export default function AddressForm({onChange, onBlur, handleSubmit, form, formR
             variant="standard"
             value={form.country}
             onChange={onChange}
-            onBlur={onBlur}
             >
             {countriesAndStates.countries.map(country => (
               <MenuItem key={country.country} value={country.country}>{country.country}</MenuItem>
