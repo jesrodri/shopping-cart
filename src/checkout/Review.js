@@ -7,10 +7,11 @@ import Grid from '@mui/material/Grid';
 
 export default function Review({handleSubmit, form, formRef, cart}) {
   const getTotal = (cart) => {
-    let total = 0;
-    cart.map(product => (
-      total += product.price
-    ));
+
+    const initial = 0;
+    const total = cart.reduce(
+      (previousValue, currentValue) => previousValue + currentValue.price, initial
+    );
     return total;
   }
   
@@ -42,7 +43,7 @@ export default function Review({handleSubmit, form, formRef, cart}) {
           </ListItem>
         ))}
 
-        <ListItem key={'total'} sx={{ py: 1, px: 0 }}>
+        <ListItem sx={{ py: 1, px: 0 }}>
           <ListItemText primary="Total" />
             <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
               ${getTotal(cart)}
