@@ -9,33 +9,10 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import countriesAndStates from '../logic/countries.json';
 
-export default function AddressForm({step, onChange, handleSubmit, form, setForm, formRef}) {
+export default function AddressForm({onChange, onBlur, handleSubmit, form, formRef}) {
 
-  const [statesList, setStatesList] = React.useState([]);
-  const [selectedState, setSelectedState] = React.useState('');
-  const [selectedCountry, setSelectedCountry] = React.useState('');
-
-  const handleChangeCountry = (event) => {
-    let selectedCountryObject = countriesAndStates.countries.find(country => country.country === event.target.value);
-    setStatesList(selectedCountryObject?.states || []);
-    setSelectedCountry(event.target.value);
-    onChange(event);
-  }
-  
-  const handleChangeState = (event) => {
-    setSelectedState(event.target.value);
-    setForm({ ...form, [event.target.name]: event.target.value });
-  }
-
-  const handleChangeAddress2 = (event) => {
-    setForm({ ...form, [event.target.name]: event.target.value });
-  }
-
-  React.useEffect(() => {
-    if (!form.country) return;
-    let selectedCountryObject = countriesAndStates.countries.find(country => country.country === form.country);
-    setStatesList(selectedCountryObject?.states || []);
-  });
+  const selectedCountryObject = countriesAndStates.countries.find(country => country.country === form.country);
+  const selectedCountryStates = selectedCountryObject ? selectedCountryObject.states : [];
 
   return (
     <React.Fragment>
@@ -54,6 +31,7 @@ export default function AddressForm({step, onChange, handleSubmit, form, setForm
             variant="standard"
             value={form.firstName || ''}
             onChange={onChange}
+            onBlur={onBlur}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -67,6 +45,7 @@ export default function AddressForm({step, onChange, handleSubmit, form, setForm
             variant="standard"
             value={form.lastName || ''}
             onChange={onChange}
+            onBlur={onBlur}
           />
         </Grid>
         <Grid item xs={12}>
@@ -80,6 +59,7 @@ export default function AddressForm({step, onChange, handleSubmit, form, setForm
             variant="standard"
             value={form.address1 || ''}
             onChange={onChange}
+            onBlur={onBlur}
           />
         </Grid>
         <Grid item xs={12}>
@@ -91,7 +71,7 @@ export default function AddressForm({step, onChange, handleSubmit, form, setForm
             autoComplete="shipping address-line2"
             variant="standard"
             value={form.address2 || ''}
-            onChange={handleChangeAddress2}
+            onChange={onChange}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -105,6 +85,7 @@ export default function AddressForm({step, onChange, handleSubmit, form, setForm
             variant="standard"
             value={form.zip || ''}
             onChange={onChange}
+            onBlur={onBlur}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -118,6 +99,7 @@ export default function AddressForm({step, onChange, handleSubmit, form, setForm
             variant="standard"
             value={form.city || ''}
             onChange={onChange}
+            onBlur={onBlur}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -130,11 +112,12 @@ export default function AddressForm({step, onChange, handleSubmit, form, setForm
             label="Country"
             fullWidth
             variant="standard"
-            value={form.country || selectedCountry}
-            onChange={handleChangeCountry}
+            value={form.country}
+            onChange={onChange}
+            onBlur={onBlur}
             >
             {countriesAndStates.countries.map(country => (
-              <MenuItem key={country.country} value={country.country || ''}>{country.country}</MenuItem>
+              <MenuItem key={country.country} value={country.country}>{country.country}</MenuItem>
             ))}
           </Select>
         </Grid>
@@ -147,11 +130,11 @@ export default function AddressForm({step, onChange, handleSubmit, form, setForm
             label="State/Province/Region"
             fullWidth
             variant="standard"
-            value={form.state || selectedState}
-            onChange={handleChangeState}
+            value={form.state}
+            onChange={onChange}
             >
-            {statesList.map(state => (
-              <MenuItem key={state} value={state || ''}>{state}</MenuItem>
+            {selectedCountryStates.map(state => (
+              <MenuItem key={state} value={state}>{state}</MenuItem>
             ))}
           </Select>
         </Grid>

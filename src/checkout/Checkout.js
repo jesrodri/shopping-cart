@@ -15,10 +15,10 @@ import Review from './Review';
 
 const steps = ['Shipping address', 'Payment details', 'Review your order'];
 
-function getStepContent(step, onChange, handleSubmit, form, setForm, formRef) {
+function getStepContent(step, onChange, onBlur, handleSubmit, form, setForm, formRef) {
   switch (step) {
     case 0:
-      return <AddressForm step={step} onChange={onChange} handleSubmit={handleSubmit} form={form} setForm={setForm} formRef={formRef} />;
+      return <AddressForm onChange={onChange} onBlur={onBlur} handleSubmit={handleSubmit} form={form} formRef={formRef} />;
     case 1:
       return <PaymentForm onChange={onChange} handleSubmit={handleSubmit} form={form} formRef={formRef} />;
     case 2:
@@ -32,7 +32,16 @@ const theme = createTheme();
 
 export default function Checkout() {
   const [activeStep, setActiveStep] = React.useState(0);
-  const [form, setForm] = React.useState({});
+  const [form, setForm] = React.useState({
+    firstName: '',
+    lastName: '',
+    address1: '',
+    address2: '',
+    zip: '',
+    city: '',
+    country: '',
+    state: ''
+  });
   const [valid, setValid] = React.useState(false);
 
   const formRef = React.useRef(null);
@@ -42,21 +51,24 @@ export default function Checkout() {
   }, [activeStep]);
   
   const checkValidity = () => {
-    setValid(formRef.current.checkValidity());
+    setValid(formRef.current.reportValidity());
   };
   
-  const handleNext = (event) => {
+  const handleNext = () => {
     setActiveStep(activeStep + 1);
   };
   
-  const handleBack = (event) => {
+  const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
   
   const onChange = (event) => {
-    checkValidity();
     setForm({ ...form, [event.target.name]: event.target.value });
   };
+  
+  const onBlur = () => {
+    checkValidity();
+  }
 
   const handleSubmit = () => {
 
@@ -91,7 +103,7 @@ export default function Checkout() {
               </React.Fragment>
             ) : (
               <React.Fragment>
-                {getStepContent(activeStep, onChange, handleSubmit, form, setForm, formRef)}
+                {getStepContent(activeStep, onChange, onBlur, handleSubmit, form, setForm, formRef)}
                 <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                   {activeStep !== 0 && (
                     <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
