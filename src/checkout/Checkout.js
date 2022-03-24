@@ -15,14 +15,14 @@ import Review from './Review';
 
 const steps = ['Shipping address', 'Payment details', 'Review your order'];
 
-function getStepContent(step, onChange, handleSubmit, form, setForm, formRef) {
+function getStepContent(step, onChange, handleSubmit, form, setForm, formRef, cart) {
   switch (step) {
     case 0:
       return <AddressForm onChange={onChange} handleSubmit={handleSubmit} form={form} formRef={formRef} />;
     case 1:
       return <PaymentForm onChange={onChange} handleSubmit={handleSubmit} form={form} formRef={formRef} />;
     case 2:
-      return <Review onChange={onChange} handleSubmit={handleSubmit} form={form} formRef={formRef} />;
+      return <Review onChange={onChange} handleSubmit={handleSubmit} form={form} formRef={formRef} cart={cart} />;
     default:
       throw new Error('Unknown step');
   }
@@ -30,7 +30,7 @@ function getStepContent(step, onChange, handleSubmit, form, setForm, formRef) {
 
 const theme = createTheme();
 
-export default function Checkout() {
+export default function Checkout({ cart }) {
   const [activeStep, setActiveStep] = React.useState(0);
   const [form, setForm] = React.useState({
     firstName: '',
@@ -103,7 +103,7 @@ export default function Checkout() {
               </React.Fragment>
             ) : (
               <React.Fragment>
-                {getStepContent(activeStep, onChange, handleSubmit, form, setForm, formRef)}
+                {getStepContent(activeStep, onChange, handleSubmit, form, setForm, formRef, cart)}
                 <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                   {activeStep !== 0 && (
                     <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>

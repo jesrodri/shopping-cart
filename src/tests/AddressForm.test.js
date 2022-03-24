@@ -26,7 +26,7 @@ describe('<AddressForm />', () => {
       const afghanistan = screen.getByText('Afghanistan');
       userEvent.click(afghanistan);
 
-      const statesSelectList = screen.getByLabelText('State/Province/Region *');
+      const statesSelectList = screen.getByLabelText('State/Province/Region');
       userEvent.click(statesSelectList);
 
       expect(screen.getByText('Badakhshan')).toBeInTheDocument();
