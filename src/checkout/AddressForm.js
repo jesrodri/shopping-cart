@@ -29,7 +29,7 @@ export default function AddressForm({onChange, onBlur, handleSubmit, form, formR
             fullWidth
             autoComplete="given-name"
             variant="standard"
-            value={form.firstName || ''}
+            value={form.firstName}
             onChange={onChange}
           />
         </Grid>
@@ -42,7 +42,7 @@ export default function AddressForm({onChange, onBlur, handleSubmit, form, formR
             fullWidth
             autoComplete="family-name"
             variant="standard"
-            value={form.lastName || ''}
+            value={form.lastName}
             onChange={onChange}
           />
         </Grid>
@@ -55,7 +55,7 @@ export default function AddressForm({onChange, onBlur, handleSubmit, form, formR
             fullWidth
             autoComplete="shipping address-line1"
             variant="standard"
-            value={form.address1 || ''}
+            value={form.address1}
             onChange={onChange}
           />
         </Grid>
@@ -67,7 +67,7 @@ export default function AddressForm({onChange, onBlur, handleSubmit, form, formR
             fullWidth
             autoComplete="shipping address-line2"
             variant="standard"
-            value={form.address2 || ''}
+            value={form.address2}
             onChange={onChange}
           />
         </Grid>
@@ -80,7 +80,7 @@ export default function AddressForm({onChange, onBlur, handleSubmit, form, formR
             fullWidth
             autoComplete="shipping postal-code"
             variant="standard"
-            value={form.zip || ''}
+            value={form.zip}
             onChange={onChange}
           />
         </Grid>
@@ -93,7 +93,7 @@ export default function AddressForm({onChange, onBlur, handleSubmit, form, formR
             fullWidth
             autoComplete="shipping address-level2"
             variant="standard"
-            value={form.city || ''}
+            value={form.city}
             onChange={onChange}
           />
         </Grid>

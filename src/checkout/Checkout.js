@@ -40,7 +40,11 @@ export default function Checkout() {
     zip: '',
     city: '',
     country: '',
-    state: ''
+    state: '',
+    cardName: '',
+    cardNumber: '',
+    expDate: '',
+    cvv: ''
   });
   const [valid, setValid] = React.useState(false);
 

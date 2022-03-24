@@ -21,7 +21,7 @@ export default function PaymentForm({onChange, handleSubmit, form, formRef}) {
             fullWidth
             autoComplete="cc-name"
             variant="standard"
-            value={form.cardName || ''}
+            value={form.cardName}
             onChange={onChange}
           />
         </Grid>
@@ -34,7 +34,7 @@ export default function PaymentForm({onChange, handleSubmit, form, formRef}) {
             fullWidth
             autoComplete="cc-number"
             variant="standard"
-            value={form.cardNumber || ''}
+            value={form.cardNumber}
             onChange={onChange}
           />
         </Grid>
@@ -47,7 +47,7 @@ export default function PaymentForm({onChange, handleSubmit, form, formRef}) {
             fullWidth
             autoComplete="cc-exp"
             variant="standard"
-            value={form.expDate || ''}
+            value={form.expDate}
             onChange={onChange}
           />
         </Grid>
@@ -61,7 +61,7 @@ export default function PaymentForm({onChange, handleSubmit, form, formRef}) {
             fullWidth
             autoComplete="cc-csc"
             variant="standard"
-            value={form.cvv || ''}
+            value={form.cvv}
             onChange={onChange}
           />
         </Grid>
