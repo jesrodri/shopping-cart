@@ -29,15 +29,23 @@ const products = [
   { name: 'Shipping', desc: '', price: 'Free' },
 ];
 
-const addresses = ['1 MUI Drive', 'Reactville', 'Anytown', '99999', 'USA'];
-const payments = [
-  { name: 'Card type', detail: 'Visa' },
-  { name: 'Card holder', detail: 'Mr John Smith' },
-  { name: 'Card number', detail: 'xxxx-xxxx-xxxx-1234' },
-  { name: 'Expiry date', detail: '04/2024' },
-];
+export default function Review({handleSubmit, form, formRef}) {
 
-export default function Review() {
+  const getcardType = (number) => {
+    switch (number[0]) {
+      case '3':
+        return 'American Express';
+      case '4':
+        return 'Visa';
+      case '5':
+        return 'Mastercard';
+      case '6':
+        return 'Discover';
+      default:
+        return 'Unknown';
+    }
+  }
+
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
@@ -58,29 +66,43 @@ export default function Review() {
           </Typography>
         </ListItem>
       </List>
-      <Grid container spacing={2}>
+      <Grid container spacing={2} ref={formRef} component="form" noValidate onSubmit={handleSubmit}>
         <Grid item xs={12} sm={6}>
           <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
             Shipping
           </Typography>
-          <Typography gutterBottom>John Smith</Typography>
-          <Typography gutterBottom>{addresses.join(', ')}</Typography>
+          <Typography gutterBottom>{form.firstName} {form.lastName}</Typography>
+          <Typography gutterBottom>{[form.address1, form.address2, form.city, form.state, form.zip, form.country].join(', ')}</Typography>
         </Grid>
         <Grid item container direction="column" xs={12} sm={6}>
           <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
             Payment details
           </Typography>
           <Grid container>
-            {payments.map((payment) => (
-              <React.Fragment key={payment.name}>
-                <Grid item xs={6}>
-                  <Typography gutterBottom>{payment.name}</Typography>
-                </Grid>
-                <Grid item xs={6}>
-                  <Typography gutterBottom>{payment.detail}</Typography>
-                </Grid>
-              </React.Fragment>
-            ))}
+            <Grid item xs={6}>
+              <Typography gutterBottom>Card type</Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <Typography gutterBottom>{getcardType(form.cardNumber)}</Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <Typography gutterBottom>Card holder</Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <Typography gutterBottom>{form.cardName}</Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <Typography gutterBottom>Card number</Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <Typography gutterBottom>xxxx-xxxx-xxxx-{form.cardNumber.slice(-4)}</Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <Typography gutterBottom>Expiry date</Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <Typography gutterBottom>{form.expDate}</Typography>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>
