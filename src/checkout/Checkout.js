@@ -74,6 +74,19 @@ export default function Checkout({ cart }) {
 
   };
 
+  React.useEffect(() => {
+    const listener = event => {
+      if (event.code === "Enter" || event.code === "NumpadEnter") {
+        event.preventDefault();
+        handleNext();
+      }
+    };
+    document.addEventListener("keydown", listener);
+    return () => {
+      document.removeEventListener("keydown", listener);
+    };
+  }, [activeStep]);
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -115,6 +128,7 @@ export default function Checkout({ cart }) {
                     variant="contained"
                     onClick={handleNext}
                     sx={{ mt: 3, ml: 1 }}
+                    type="submit"
                     disabled={!valid}
                   >
                     {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
