@@ -9,7 +9,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import countriesAndStates from '../logic/countries.json';
 
-export default function AddressForm({onChange, onBlur, handleSubmit, form, formRef}) {
+export default function AddressForm({onChange, handleSubmit, form, formRef}) {
 
   const selectedCountryObject = countriesAndStates.countries.find(country => country.country === form.country);
   const selectedCountryStates = selectedCountryObject ? selectedCountryObject.states : [];
