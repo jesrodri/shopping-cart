@@ -223,7 +223,16 @@ describe('<Checkout />', () => {
         expect(screen.getByDisplayValue(form.cardNumber)).toBeInTheDocument();
         expect(screen.getByDisplayValue(form.expDate)).toBeInTheDocument();
         expect(screen.getByDisplayValue(form.cvv)).toBeInTheDocument();
-        });
+      });
+    });
+  
+    describe('when the user clicks the PLACE ORDER button', () => {
+      it('keeps the THANK YOU FOR YOUR ORDER message', () => {  
+        const buttonPlaceOrder = screen.getByRole('button', {name: /place order/i});
+        userEvent.click(buttonPlaceOrder);
+  
+        expect(screen.getByRole('heading', {name: /thank you for your order\./i})).toBeInTheDocument();
+      });
     });
   });
 });
