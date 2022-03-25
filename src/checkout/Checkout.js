@@ -15,14 +15,14 @@ import Review from './Review';
 
 const steps = ['Shipping address', 'Payment details', 'Review your order'];
 
-function getStepContent(step, onChange, handleSubmit, form, setForm, formRef, cart) {
+function getStepContent(step, onChange, handleNext, form, setForm, formRef, cart) {
   switch (step) {
     case 0:
-      return <AddressForm onChange={onChange} handleSubmit={handleSubmit} form={form} formRef={formRef} />;
+      return <AddressForm onChange={onChange} handleNext={handleNext} form={form} formRef={formRef} />;
     case 1:
-      return <PaymentForm onChange={onChange} handleSubmit={handleSubmit} form={form} formRef={formRef} />;
+      return <PaymentForm onChange={onChange} handleNext={handleNext} form={form} formRef={formRef} />;
     case 2:
-      return <Review handleSubmit={handleSubmit} form={form} formRef={formRef} cart={cart} />;
+      return <Review handleNext={handleNext} form={form} formRef={formRef} cart={cart} />;
     default:
       throw new Error('Unknown step');
   }
@@ -70,10 +70,6 @@ export default function Checkout({ cart }) {
     setForm(formState => ({ ...formState, [event.target.name]: event.target.value }));
   };
 
-  const handleSubmit = () => {
-
-  };
-
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -103,7 +99,7 @@ export default function Checkout({ cart }) {
               </React.Fragment>
             ) : (
               <React.Fragment>
-                {getStepContent(activeStep, onChange, handleSubmit, form, setForm, formRef, cart)}
+                {getStepContent(activeStep, onChange, handleNext, form, setForm, formRef, cart)}
                 <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                   {activeStep !== 0 && (
                     <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
