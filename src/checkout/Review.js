@@ -6,7 +6,6 @@ import ListItemText from '@mui/material/ListItemText';
 import Grid from '@mui/material/Grid';
 
 export default function Review({form, cart}) {
-  console.log(cart);
   const getTotal = (cart) => {
 
     const initial = 0;

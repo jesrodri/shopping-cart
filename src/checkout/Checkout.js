@@ -16,7 +16,6 @@ import Review from './Review';
 const steps = ['Shipping address', 'Payment details', 'Review your order'];
 
 function getStepContent(step, onChange, form, cart) {
-  console.log(cart);
   switch (step) {
     case 0:
       return <AddressForm onChange={onChange} form={form} />;
@@ -32,7 +31,6 @@ function getStepContent(step, onChange, form, cart) {
 const theme = createTheme();
 
 export default function Checkout({ cart }) {
-  // console.log(cart);
   const [activeStep, setActiveStep] = React.useState(0);
   const [form, setForm] = React.useState({
     firstName: '',
