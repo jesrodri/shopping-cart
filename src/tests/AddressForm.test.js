@@ -5,9 +5,13 @@ import AddressForm from '../checkout/AddressForm';
 
 describe('<AddressForm />', () => {
 
-  const onChange = jest.fn();
-  const handleSubmit = jest.fn();
-  const form = {country: '', state: ''};
+  let onChange, handleSubmit, form;
+
+  beforeEach(() => {
+    onChange = jest.fn();
+    handleSubmit = jest.fn();
+    form = {country: '', state: ''};
+  });
 
   describe('when it renders the Address Form', () => {
     it('should display the right countries when the country select list is clicked', () => {

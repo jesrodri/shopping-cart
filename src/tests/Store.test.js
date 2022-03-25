@@ -44,7 +44,7 @@ describe('<Store />', () => {
       const testProduct = PRODUCTS[0];
   
       render(<Store initialComponent="products"/>);
-      const productPrice = screen.getByText('$ ' + testProduct.price);
+      const productPrice = screen.getByText(`$ ${testProduct.price}`);
   
       expect(productPrice).toBeInTheDocument();
     });
