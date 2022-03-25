@@ -9,7 +9,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import countriesAndStates from '../logic/countries.json';
 
-export default function AddressForm({onChange, handleNext, form, formRef}) {
+export default function AddressForm({onChange, form}) {
 
   const selectedCountryObject = countriesAndStates.countries.find(country => country.country === form.country);
   const selectedCountryStates = selectedCountryObject ? selectedCountryObject.states : [];
@@ -19,7 +19,7 @@ export default function AddressForm({onChange, handleNext, form, formRef}) {
       <Typography variant="h6" gutterBottom>
         Shipping address
       </Typography>
-      <Grid container spacing={3} ref={formRef} component="form" noValidate onSubmit={handleNext}>
+      <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
           <TextField
             required

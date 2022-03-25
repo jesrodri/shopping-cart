@@ -15,14 +15,15 @@ import Review from './Review';
 
 const steps = ['Shipping address', 'Payment details', 'Review your order'];
 
-function getStepContent(step, onChange, handleNext, form, setForm, formRef, cart) {
+function getStepContent(step, onChange, form, cart) {
+  console.log(cart);
   switch (step) {
     case 0:
-      return <AddressForm onChange={onChange} handleNext={handleNext} form={form} formRef={formRef} />;
+      return <AddressForm onChange={onChange} form={form} />;
     case 1:
-      return <PaymentForm onChange={onChange} handleNext={handleNext} form={form} formRef={formRef} />;
+      return <PaymentForm onChange={onChange} form={form} />;
     case 2:
-      return <Review handleNext={handleNext} form={form} formRef={formRef} cart={cart} />;
+      return <Review form={form} cart={cart} />;
     default:
       throw new Error('Unknown step');
   }
@@ -31,6 +32,7 @@ function getStepContent(step, onChange, handleNext, form, setForm, formRef, cart
 const theme = createTheme();
 
 export default function Checkout({ cart }) {
+  // console.log(cart);
   const [activeStep, setActiveStep] = React.useState(0);
   const [form, setForm] = React.useState({
     firstName: '',
@@ -58,7 +60,8 @@ export default function Checkout({ cart }) {
     setValid(formRef.current.checkValidity());
   };
   
-  const handleNext = () => {
+  const handleNext = (event) => {
+    event.preventDefault();
     setActiveStep(activeStep + 1);
   };
   
@@ -69,19 +72,6 @@ export default function Checkout({ cart }) {
   const onChange = (event) => {
     setForm(formState => ({ ...formState, [event.target.name]: event.target.value }));
   };
-
-  React.useEffect(() => {
-    const listener = event => {
-      if (event.code === "Enter" || event.code === "NumpadEnter") {
-        event.preventDefault();
-        handleNext();
-      }
-    };
-    document.addEventListener("keydown", listener);
-    return () => {
-      document.removeEventListener("keydown", listener);
-    };
-  }, [activeStep]);
 
   return (
     <ThemeProvider theme={theme}>
@@ -112,24 +102,26 @@ export default function Checkout({ cart }) {
               </React.Fragment>
             ) : (
               <React.Fragment>
-                {getStepContent(activeStep, onChange, handleNext, form, setForm, formRef, cart)}
-                <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-                  {activeStep !== 0 && (
-                    <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
-                      Back
-                    </Button>
-                  )}
+                <form ref={formRef} component="form" noValidate onSubmit={handleNext}>
+                  {getStepContent(activeStep, onChange, form, cart)}
+                  <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+                    {activeStep !== 0 && (
+                      <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
+                        Back
+                      </Button>
+                    )}
 
-                  <Button
-                    variant="contained"
-                    onClick={handleNext}
-                    sx={{ mt: 3, ml: 1 }}
-                    type="submit"
-                    disabled={!valid}
-                  >
-                    {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
-                  </Button>
-                </Box>
+                    <Button
+                      variant="contained"
+                      onClick={handleNext}
+                      sx={{ mt: 3, ml: 1 }}
+                      type="submit"
+                      disabled={!valid}
+                      >
+                      {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
+                    </Button>
+                  </Box>
+                </form>
               </React.Fragment>
             )}
           </React.Fragment>

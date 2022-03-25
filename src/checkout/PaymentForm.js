@@ -5,13 +5,13 @@ import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 
-export default function PaymentForm({onChange, handleNext, form, formRef}) {
+export default function PaymentForm({onChange, form}) {
   return (
     <React.Fragment>
       <Typography variant="h6" gutterBottom>
         Payment method
       </Typography>
-      <Grid container spacing={3} ref={formRef} component="form" noValidate onSubmit={handleNext}>
+      <Grid container spacing={3}>
         <Grid item xs={12} md={6}>
           <TextField
             required
