@@ -1,12 +1,21 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
-import AddressForm from '../checkout';
+import AddressForm from '../checkout/AddressForm';
 
 describe('<AddressForm />', () => {
+
+  let onChange, handleSubmit, form;
+
+  beforeEach(() => {
+    onChange = jest.fn();
+    handleSubmit = jest.fn();
+    form = {country: '', state: ''};
+  });
+
   describe('when it renders the Address Form', () => {
     it('should display the right countries when the country select list is clicked', () => {
-      render(<AddressForm />);
+      render(<AddressForm onChange={onChange} handleSubmit={handleSubmit} form={form} />);
 
       const countrySelectList = screen.getByLabelText('Country *');
       userEvent.click(countrySelectList);
@@ -18,20 +27,15 @@ describe('<AddressForm />', () => {
   });
 
   describe('when the user selects a country', () => {
-    it('should display the right list of states when the state select list is clicked', () => {
-      render(<AddressForm />);
+    it('should call onChange function', () => {
+      render(<AddressForm onChange={onChange} handleSubmit={handleSubmit} form={form} />);
 
       const countrySelectList = screen.getByLabelText('Country *');
       userEvent.click(countrySelectList);
       const afghanistan = screen.getByText('Afghanistan');
       userEvent.click(afghanistan);
 
-      const statesSelectList = screen.getByLabelText('State/Province/Region *');
-      userEvent.click(statesSelectList);
-
-      expect(screen.getByText('Badakhshan')).toBeInTheDocument();
-      expect(screen.getByText('Badghis')).toBeInTheDocument();
-      expect(screen.getByText('Baghlan')).toBeInTheDocument();
+      expect(onChange).toHaveBeenCalledTimes(1);
     });
   });
 });

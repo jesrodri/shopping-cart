@@ -5,6 +5,22 @@ import Store from '../components/Store';
 import { PRODUCTS } from "../logic/constants";
 
 describe('<Store />', () => {
+
+  const form = {
+    firstName: 'Halan',
+    lastName: 'Pinheiro',
+    address1: 'Rua do Halan',
+    address2: '42',
+    zip: '424242',
+    city: 'Halanville',
+    country: 'Albania',
+    state: 'Fier',
+    cardName: 'Halan Pinheiro',
+    cardNumber: '567891234',
+    expDate: '11/22',
+    cvv: '123'
+  };
+
   describe('when it renders the products list', () => {
     it('has the product name', () => {
       const testProduct = PRODUCTS[0];
@@ -22,6 +38,15 @@ describe('<Store />', () => {
       const productDescription = screen.getByText(testProduct.description);
   
       expect(productDescription).toBeInTheDocument();
+    });
+
+    it('has the product price', () => {
+      const testProduct = PRODUCTS[0];
+  
+      render(<Store initialComponent="products"/>);
+      const productPrice = screen.getByText(`$ ${testProduct.price}`);
+  
+      expect(productPrice).toBeInTheDocument();
     });
   });
 

@@ -7,7 +7,6 @@ import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
-import Link from '@mui/material/Link';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import AddressForm from './AddressForm';
@@ -16,14 +15,14 @@ import Review from './Review';
 
 const steps = ['Shipping address', 'Payment details', 'Review your order'];
 
-function getStepContent(step) {
+function getStepContent(step, onChange, handleNext, form, setForm, formRef, cart) {
   switch (step) {
     case 0:
-      return <AddressForm />;
+      return <AddressForm onChange={onChange} handleNext={handleNext} form={form} formRef={formRef} />;
     case 1:
-      return <PaymentForm />;
+      return <PaymentForm onChange={onChange} handleNext={handleNext} form={form} formRef={formRef} />;
     case 2:
-      return <Review />;
+      return <Review handleNext={handleNext} form={form} formRef={formRef} cart={cart} />;
     default:
       throw new Error('Unknown step');
   }
@@ -31,15 +30,44 @@ function getStepContent(step) {
 
 const theme = createTheme();
 
-export default function Checkout() {
+export default function Checkout({ cart }) {
   const [activeStep, setActiveStep] = React.useState(0);
+  const [form, setForm] = React.useState({
+    firstName: '',
+    lastName: '',
+    address1: '',
+    address2: '',
+    zip: '',
+    city: '',
+    country: '',
+    state: '',
+    cardName: '',
+    cardNumber: '',
+    expDate: '',
+    cvv: ''
+  });
+  const [valid, setValid] = React.useState(false);
 
+  const formRef = React.useRef(null);
+
+  React.useEffect(() => {
+    checkValidity();
+  }, [form, activeStep]);
+  
+  const checkValidity = () => {
+    setValid(formRef.current.checkValidity());
+  };
+  
   const handleNext = () => {
     setActiveStep(activeStep + 1);
   };
-
+  
   const handleBack = () => {
     setActiveStep(activeStep - 1);
+  };
+  
+  const onChange = (event) => {
+    setForm(formState => ({ ...formState, [event.target.name]: event.target.value }));
   };
 
   return (
@@ -71,7 +99,7 @@ export default function Checkout() {
               </React.Fragment>
             ) : (
               <React.Fragment>
-                {getStepContent(activeStep)}
+                {getStepContent(activeStep, onChange, handleNext, form, setForm, formRef, cart)}
                 <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                   {activeStep !== 0 && (
                     <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
@@ -83,6 +111,7 @@ export default function Checkout() {
                     variant="contained"
                     onClick={handleNext}
                     sx={{ mt: 3, ml: 1 }}
+                    disabled={!valid}
                   >
                     {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
                   </Button>

@@ -37,7 +37,7 @@ function Store({initialComponent}) {
       <main className="store__body">
         {componentToRender === 'cart' && <Cart cart={cartItems} removeFromCart={removeFromCart} renderCheckout={renderCheckout}/>}
         {componentToRender === 'products' && <ProductsList products={products} addToCart={addToCart}/>}
-        {componentToRender === 'checkout' && <Checkout/>}
+        {componentToRender === 'checkout' && <Checkout cart={cartItems}/>}
       </main>
     </div>
   );
