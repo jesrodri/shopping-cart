@@ -86,43 +86,43 @@ export default function Checkout({ cart }) {
               </Step>
             ))}
           </Stepper>
-          <React.Fragment>
-            {activeStep === steps.length ? (
-              <React.Fragment>
-                <Typography variant="h5" gutterBottom>
-                  Thank you for your order.
-                </Typography>
-                <Typography variant="subtitle1">
-                  Your order number is #2001539. We have emailed your order
-                  confirmation, and will send you an update when your order has
-                  shipped.
-                </Typography>
-              </React.Fragment>
-            ) : (
-              <React.Fragment>
-                <form ref={formRef} component="form" noValidate onSubmit={handleNext}>
-                  {getStepContent(activeStep, onChange, form, cart)}
-                  <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-                    {activeStep !== 0 && (
-                      <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
-                        Back
-                      </Button>
-                    )}
+          <form ref={formRef} component="form" noValidate onSubmit={handleNext}>
+            <React.Fragment>
+              {activeStep === steps.length ? (
+                <React.Fragment>
+                  <Typography variant="h5" gutterBottom>
+                    Thank you for your order.
+                  </Typography>
+                  <Typography variant="subtitle1">
+                    Your order number is #2001539. We have emailed your order
+                    confirmation, and will send you an update when your order has
+                    shipped.
+                  </Typography>
+                </React.Fragment>
+              ) : (
+                <React.Fragment>
+                    {getStepContent(activeStep, onChange, form, cart)}
+                    <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+                      {activeStep !== 0 && (
+                        <Button onClick={handleBack} sx={{ mt: 3, ml: 1 }}>
+                          Back
+                        </Button>
+                      )}
 
-                    <Button
-                      variant="contained"
-                      onClick={handleNext}
-                      sx={{ mt: 3, ml: 1 }}
-                      type="submit"
-                      disabled={!valid}
-                      >
-                      {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
-                    </Button>
-                  </Box>
-                </form>
-              </React.Fragment>
+                      <Button
+                        variant="contained"
+                        onClick={handleNext}
+                        sx={{ mt: 3, ml: 1 }}
+                        type="submit"
+                        disabled={!valid}
+                        >
+                        {activeStep === steps.length - 1 ? 'Place order' : 'Next'}
+                      </Button>
+                    </Box>
+                </React.Fragment>
             )}
-          </React.Fragment>
+            </React.Fragment>
+          </form>
         </Paper>
       </Container>
     </ThemeProvider>
