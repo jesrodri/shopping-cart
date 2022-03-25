@@ -5,7 +5,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Grid from '@mui/material/Grid';
 
-export default function Review({handleSubmit, form, formRef, cart}) {
+export default function Review({handleNext, form, formRef, cart}) {
   const getTotal = (cart) => {
 
     const initial = 0;
@@ -50,7 +50,7 @@ export default function Review({handleSubmit, form, formRef, cart}) {
             </Typography>
         </ListItem>
       </List>
-      <Grid container spacing={2} ref={formRef} component="form" noValidate onSubmit={handleSubmit}>
+      <Grid container spacing={2} ref={formRef} component="form" noValidate onSubmit={handleNext}>
         <Grid item xs={12} sm={6}>
           <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
             Shipping
