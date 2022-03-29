@@ -5,10 +5,9 @@ import theme from '../theme';
 
 function App() {
   return (
-    <>
-    <ThemeProvider theme={theme} />
-    <Store initialComponent="products"/>
-    </>
+    <ThemeProvider theme={theme}>
+      <Store initialComponent="products"/>
+    </ThemeProvider>
   );
 }
 
