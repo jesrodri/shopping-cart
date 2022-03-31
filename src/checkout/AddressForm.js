@@ -1,6 +1,5 @@
 import * as React from 'react';
 import Grid from '@mui/material/Grid';
-import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
@@ -8,6 +7,12 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import countriesAndStates from '../logic/countries.json';
+import Button from '../components/Button';
+import Text from '../components/Text';
+import Input from '../components/Input';
+import { ThemeProvider } from 'styled-components'
+import theme from '../theme';
+
 
 export default function AddressForm({onChange, form}) {
 
@@ -16,9 +21,9 @@ export default function AddressForm({onChange, form}) {
 
   return (
     <React.Fragment>
-      <Typography variant="h6" gutterBottom>
+      <Text variant="h3" gutterBottom>
         Shipping address
-      </Typography>
+      </Text>
       <Grid container spacing={3}>
         <Grid item xs={12} sm={6}>
           <TextField
