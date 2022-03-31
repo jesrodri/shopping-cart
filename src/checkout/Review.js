@@ -1,13 +1,9 @@
 import * as React from 'react';
+import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Grid from '@mui/material/Grid';
-import Text from '../components/Text';
-import Input from '../components/Input';
-import { ThemeProvider } from 'styled-components'
-import theme from '../theme';
-import css from '@styled-system/css'
 
 export default function Review({form, cart}) {
   const getTotal = (cart) => {
@@ -36,60 +32,60 @@ export default function Review({form, cart}) {
 
   return (
     <React.Fragment>
-      <Text variant="h3" gutterBottom>
+      <Typography variant="h6" gutterBottom>
         Order summary
-      </Text>
+      </Typography>
       <List disablePadding>
         {cart.map((product) => (
           <ListItem key={product.name} sx={{ py: 1, px: 0 }}>
             <ListItemText primary={product.name} secondary={product.description} />
-            <Text variant="body2">{product.price}</Text>
+            <Typography variant="body2">{product.price}</Typography>
           </ListItem>
         ))}
 
         <ListItem sx={{ py: 1, px: 0 }}>
           <ListItemText primary="Total" />
-            <Text variant="h4" css={css({fontWeight: 700})}>
+            <Typography variant="subtitle1" sx={{ fontWeight: 700 }}>
               ${getTotal(cart)}
-            </Text>
+            </Typography>
         </ListItem>
       </List>
       <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
-          <Text variant="h3" gutterBottom css={css({marginTop: theme.space[4]})}>
+          <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
             Shipping
-          </Text>
-          <Text gutterBottom>{form.firstName} {form.lastName}</Text>
-          <Text gutterBottom>{[form.address1, form.address2, form.city, form.state, form.zip, form.country].join(', ')}</Text>
+          </Typography>
+          <Typography gutterBottom>{form.firstName} {form.lastName}</Typography>
+          <Typography gutterBottom>{[form.address1, form.address2, form.city, form.state, form.zip, form.country].join(', ')}</Typography>
         </Grid>
         <Grid item container direction="column" xs={12} sm={6}>
-          <Text variant="h3" gutterBottom css={css({marginTop: theme.space[4]})}>
+          <Typography variant="h6" gutterBottom sx={{ mt: 2 }}>
             Payment details
-          </Text>
+          </Typography>
           <Grid container>
             <Grid item xs={6}>
-              <Text gutterBottom>Card type</Text>
+              <Typography gutterBottom>Card type</Typography>
             </Grid>
             <Grid item xs={6}>
-              <Text gutterBottom>{getcardType(form.cardNumber)}</Text>
+              <Typography gutterBottom>{getcardType(form.cardNumber)}</Typography>
             </Grid>
             <Grid item xs={6}>
-              <Text gutterBottom>Card holder</Text>
+              <Typography gutterBottom>Card holder</Typography>
             </Grid>
             <Grid item xs={6}>
-              <Text gutterBottom>{form.cardName}</Text>
+              <Typography gutterBottom>{form.cardName}</Typography>
             </Grid>
             <Grid item xs={6}>
-              <Text gutterBottom>Card number</Text>
+              <Typography gutterBottom>Card number</Typography>
             </Grid>
             <Grid item xs={6}>
-              <Text gutterBottom>xxxx-xxxx-xxxx-{form.cardNumber.slice(-4)}</Text>
+              <Typography gutterBottom>xxxx-xxxx-xxxx-{form.cardNumber.slice(-4)}</Typography>
             </Grid>
             <Grid item xs={6}>
-              <Text gutterBottom>Expiry date</Text>
+              <Typography gutterBottom>Expiry date</Typography>
             </Grid>
             <Grid item xs={6}>
-              <Text gutterBottom>{form.expDate}</Text>
+              <Typography gutterBottom>{form.expDate}</Typography>
             </Grid>
           </Grid>
         </Grid>
