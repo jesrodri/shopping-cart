@@ -1,16 +1,16 @@
 const colors = {
   black:       '#000000',
   white:       '#ffffff',
-  lightgray:   '#b5b0a7',
+  lightGray:   '#b5b0a7',
   gray:        '#999999',
-  darkgray:    '#37352f',
-  darkred:     '#cc0000',
+  darkGray:    '#37352f',
+  darkRed:     '#cc0000',
   yellow:      '#e0ca00',
-  lightyellow: '#f7e581',
+  lightYellow: '#f7e581',
   salmon:      '#fa8072',
-  darksalmon:  '#f16050',
+  darkSalmon:  '#f16050',
   green:       '#66f57e',
-  darkgreen:   '#49a659',
+  darkGreen:   '#49a659',
 }
 
 const space = [0, 4, 8, 16, 32, 64, 128, 256, 512]
