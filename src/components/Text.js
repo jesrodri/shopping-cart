@@ -6,7 +6,7 @@ const Text = styled.text`
   margin-block-end: ${({ theme }) => theme.space[4]};
   line-height: ${({ theme }) => theme.space[5]};
   text-align: ${(props) => props.align};
-  font-size: ${({ theme }) => theme.fontSizes.variant};
+  font-size: ${(props) => props.theme.fontSizes[props.variant]};
 `
 
 export default Text;
