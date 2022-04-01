@@ -1,6 +1,6 @@
 import renderer from 'react-test-renderer';
 import Input from '../components/Input';
-import { ThemeProvider } from 'styled-components'
+import { ThemeProvider } from 'styled-components';
 import theme from '../theme';
 
 describe('<Input />', () => {

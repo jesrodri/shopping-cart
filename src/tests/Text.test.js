@@ -1,6 +1,6 @@
 import renderer from 'react-test-renderer';
 import Text from '../components/Text';
-import { ThemeProvider } from 'styled-components'
+import { ThemeProvider } from 'styled-components';
 import theme from '../theme';
 
 describe('<Text />', () => {
