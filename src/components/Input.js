@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 const borderColor = ({ theme, error }) => {
   if (error) {
-    return theme.colors.inputBorderColor;
+    return theme.colors.input.border;
   } else {
-    return theme.colors.errorColor;
+    return theme.colors.input.error;
   }
 }
 
@@ -24,7 +24,7 @@ const Input = styled.input`
   }
 
   option {
-    color: ${({ theme }) => theme.colors.optionColor};
+    color: ${({ theme }) => theme.colors.input.option};
   }
 `
 

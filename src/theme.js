@@ -2,14 +2,20 @@ const colors = {
   black:                 '#000000',
   white:                 '#ffffff',
   backgroundColor:       '#FBF8F1',
-  buttonBackground:      '#1976d2',
-  disButtonBackground:   'rgba(0, 0, 0, 0.12)',
-  hoverButtonBackground: '#1565c0',
-  buttonText:            '#fff',
-  disButtonText:         'rgba(0, 0, 0, 0.26)',
-  optionTextColor:       '#333333',
-  inputBorderColor:      '#a7a7a7',
-  errorColor:            '#FF5677',
+  buttonBackground: {
+    default:  '#1976d2',
+    hover:    '#1565c0',
+    disabled: 'rgba(0, 0, 0, 0.12)',
+  },
+  buttonText: {
+    default: '#fff',
+    disabled: 'rgba(0, 0, 0, 0.26)',
+  },
+  input: {
+    option: '#333333',
+    border: '#a7a7a7',
+    error: '#FF5677',
+  }
 }
 
 const space = [
@@ -29,23 +35,13 @@ const fonts = {
   body: "'Roboto', 'Helvetica', 'Arial', sans-serif",
 }
 
-const fontSizes = [
-  '0px',
-  '4px',
-  '8px',
-  '10px',
-  '12px',
-  '14px',
-  '16px',
-  '18px',
-  '20px',
-  '24px',
-  '28px',
-  '32px',
-  '34px',
-  '36px',
-  '40px',
-  ]
+const fontSizes = {
+  h1: '34px',
+  h2: '24px',
+  h3: '20px',
+  body: '16px',
+  body2: '14px',
+}
 
 const fontWeights = [0, 300, 400, 500, 700]
 
